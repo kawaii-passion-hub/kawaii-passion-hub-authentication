@@ -6,6 +6,10 @@ import 'package:get_it/get_it.dart';
 import 'package:kawaii_passion_hub_authentication/kawaii_passion_hub_authentication.dart';
 import 'firebase_options.dart';
 
+const bool useEmulator = false;
+//Ugly, try to find a solution
+UserInformationUpdated? lastEvent;
+
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp(
@@ -19,7 +23,6 @@ void main() async {
 
 EventBus initializeApp() {
   EventBus globalBus = EventBus();
-  globalBus.on().listen((event) {});
   GetIt.I.registerSingleton(globalBus);
   return globalBus;
 }
@@ -87,8 +90,9 @@ class AuthGate extends StatelessWidget {
   Widget build(BuildContext context) {
     Widget result = StreamBuilder<UserInformationUpdated?>(
       stream: EventBusWidget.of(context).eventBus.on<UserInformationUpdated>(),
-      initialData: null,
+      initialData: lastEvent,
       builder: (context, snapshot) {
+        lastEvent = snapshot.data;
         if (!snapshot.hasData || !snapshot.data!.newUser.isAuthenticated) {
           return AuthenticationWidget(
             googleClientId: const String.fromEnvironment('GOOGLE_CLIENT_ID'),
@@ -102,7 +106,7 @@ class AuthGate extends StatelessWidget {
         return MyHomePage(title: "App for ${snapshot.data!.newUser.name}");
       },
     );
-    initialize();
+    initialize(useEmulator: useEmulator);
     return result;
   }
 }

@@ -50,22 +50,22 @@ class DefaultFirebaseOptions {
   }
 
   static const FirebaseOptions web = FirebaseOptions(
-    apiKey: 'AIzaSyBCOXhlH6EAfMSgeIlTR869izthcAGHmYM',
-    appId: '1:996108416049:web:76ed1e8419b9eff860d110',
-    messagingSenderId: '996108416049',
-    projectId: 'kawaii-passion-hub',
-    authDomain: 'kawaii-passion-hub.firebaseapp.com',
-    databaseURL: 'https://kawaii-passion-hub-default-rtdb.europe-west1.firebasedatabase.app',
-    storageBucket: 'kawaii-passion-hub.appspot.com',
-    measurementId: 'G-LFJP7SZ3GS',
+    apiKey: 'AIzaSyABcWQDZSsBe7UZSKBLbc23Xsqf3JWJtuc',
+    appId: '1:958812987232:web:fa5572c2b8f8a5c8354805',
+    messagingSenderId: '958812987232',
+    projectId: 'kawaii-passion-hub-auth',
+    authDomain: 'kawaii-passion-hub-auth.firebaseapp.com',
+    databaseURL: 'https://kawaii-passion-hub-auth-default-rtdb.europe-west1.firebasedatabase.app',
+    storageBucket: 'kawaii-passion-hub-auth.appspot.com',
+    measurementId: 'G-W04N1EB6TC',
   );
 
   static const FirebaseOptions android = FirebaseOptions(
-    apiKey: 'AIzaSyA8npAmdrTN5wfjSeIWRLU1EATQWB4jAUc',
-    appId: '1:996108416049:android:5937fbcd6af8049960d110',
-    messagingSenderId: '996108416049',
-    projectId: 'kawaii-passion-hub',
-    databaseURL: 'https://kawaii-passion-hub-default-rtdb.europe-west1.firebasedatabase.app',
-    storageBucket: 'kawaii-passion-hub.appspot.com',
+    apiKey: 'AIzaSyCttki_Tvdkpxv5KIazc5ZCXRtuleaNUSg',
+    appId: '1:958812987232:android:1d13f94cfdc5d1d1354805',
+    messagingSenderId: '958812987232',
+    projectId: 'kawaii-passion-hub-auth',
+    databaseURL: 'https://kawaii-passion-hub-auth-default-rtdb.europe-west1.firebasedatabase.app',
+    storageBucket: 'kawaii-passion-hub-auth.appspot.com',
   );
 }

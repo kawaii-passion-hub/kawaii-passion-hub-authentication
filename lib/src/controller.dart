@@ -4,16 +4,23 @@ import 'dart:io';
 import 'package:event_bus/event_bus.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_database/firebase_database.dart';
-import 'package:flutter/foundation.dart';
 import 'package:get_it/get_it.dart';
 import 'model.dart';
 
-void initialize() {
-  if (kDebugMode) {
+bool initialized = false;
+
+void initialize({bool useEmulator = false}) {
+  if (initialized) {
+    return;
+  }
+  initialized = true;
+
+  if (useEmulator) {
     final host = Platform.isAndroid ? '10.0.2.2' : 'localhost';
     const authPort = 9099;
     const databasePort = 9000;
 
+    // ignore: avoid_print
     print('Running with auth emulator.');
 
     FirebaseDatabase.instance.useDatabaseEmulator(host, databasePort);

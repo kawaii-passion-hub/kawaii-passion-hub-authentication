@@ -1,21 +1,21 @@
 {
   "project_info": {
-    "project_number": "996108416049",
-    "firebase_url": "https://kawaii-passion-hub-default-rtdb.europe-west1.firebasedatabase.app",
-    "project_id": "kawaii-passion-hub",
-    "storage_bucket": "kawaii-passion-hub.appspot.com"
+    "project_number": "958812987232",
+    "firebase_url": "https://kawaii-passion-hub-auth-default-rtdb.europe-west1.firebasedatabase.app",
+    "project_id": "kawaii-passion-hub-auth",
+    "storage_bucket": "kawaii-passion-hub-auth.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:996108416049:android:5937fbcd6af8049960d110",
+        "mobilesdk_app_id": "1:958812987232:android:1d13f94cfdc5d1d1354805",
         "android_client_info": {
           "package_name": "com.example.example"
         }
       },
       "oauth_client": [
         {
-          "client_id": "996108416049-831sibbf9d10ltvkfd1gsgv8jj63v9sa.apps.googleusercontent.com",
+          "client_id": "958812987232-a1f9rgt2nmle037hbgbala65hgg2i36j.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
             "package_name": "com.example.example",
@@ -23,57 +23,20 @@
           }
         },
         {
-          "client_id": "996108416049-8fdpqmhqasndqa8kiacr00kbavvciqt8.apps.googleusercontent.com",
+          "client_id": "958812987232-6kiapctp94lt8v43m8b0nrtb6a2669du.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyA8npAmdrTN5wfjSeIWRLU1EATQWB4jAUc"
+          "current_key": "AIzaSyCttki_Tvdkpxv5KIazc5ZCXRtuleaNUSg"
         }
       ],
       "services": {
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "996108416049-8fdpqmhqasndqa8kiacr00kbavvciqt8.apps.googleusercontent.com",
-              "client_type": 3
-            }
-          ]
-        }
-      }
-    },
-    {
-      "client_info": {
-        "mobilesdk_app_id": "1:996108416049:android:08103344ee43602b60d110",
-        "android_client_info": {
-          "package_name": "com.example.kawaii_passion_hub"
-        }
-      },
-      "oauth_client": [
-        {
-          "client_id": "996108416049-u31aigcb0j81ndpqhtk9j9heg2ktcjp5.apps.googleusercontent.com",
-          "client_type": 1,
-          "android_info": {
-            "package_name": "com.example.kawaii_passion_hub",
-            "certificate_hash": "55a967d64b2d864a61f2e9db169277f8b2323be5"
-          }
-        },
-        {
-          "client_id": "996108416049-8fdpqmhqasndqa8kiacr00kbavvciqt8.apps.googleusercontent.com",
-          "client_type": 3
-        }
-      ],
-      "api_key": [
-        {
-          "current_key": "AIzaSyA8npAmdrTN5wfjSeIWRLU1EATQWB4jAUc"
-        }
-      ],
-      "services": {
-        "appinvite_service": {
-          "other_platform_oauth_client": [
-            {
-              "client_id": "996108416049-8fdpqmhqasndqa8kiacr00kbavvciqt8.apps.googleusercontent.com",
+              "client_id": "958812987232-6kiapctp94lt8v43m8b0nrtb6a2669du.apps.googleusercontent.com",
               "client_type": 3
             }
           ]
