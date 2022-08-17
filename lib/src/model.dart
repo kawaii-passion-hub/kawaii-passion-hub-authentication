@@ -2,8 +2,9 @@ class UserInformation {
   final bool isAuthenticated;
   final String? name;
   final Map<String, dynamic>? claims;
+  final String? jwt;
 
-  const UserInformation(this.isAuthenticated, this.name, this.claims);
+  const UserInformation(this.isAuthenticated, this.name, this.claims, this.jwt);
 }
 
 class UserInformationUpdated {

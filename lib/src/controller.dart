@@ -65,19 +65,21 @@ class Controller extends Disposable {
         optionalUser ?? FirebaseAuth.instanceFor(app: authApp).currentUser;
     UserInformation info;
     if (user == null) {
-      info = const UserInformation(false, null, null);
+      info = const UserInformation(false, null, null, null);
     } else {
       IdTokenResult idToken = await user.getIdTokenResult(true);
+      String jwt = await user.getIdToken();
       final stream = FirebaseDatabase.instance
           .ref('metadata/${user.uid}/refreshTime')
           .onValue;
       eventSubscription?.cancel();
       eventSubscription = stream.listen((event) async {
         idToken = await user.getIdTokenResult(true);
-        info = UserInformation(true, user.displayName, idToken.claims);
+        jwt = await user.getIdToken();
+        info = UserInformation(true, user.displayName, idToken.claims, jwt);
         globalBus.fire(UserInformationUpdated(info));
       });
-      info = UserInformation(true, user.displayName, idToken.claims);
+      info = UserInformation(true, user.displayName, idToken.claims, jwt);
     }
     globalBus.fire(UserInformationUpdated(info));
   }
