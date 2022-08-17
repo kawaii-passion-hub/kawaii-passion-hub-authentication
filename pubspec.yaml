@@ -10,6 +10,7 @@ environment:
 dependencies:
   event_bus: ^2.0.0
   firebase_auth: ^3.6.3
+  firebase_core: ^1.20.1
   firebase_database: ^9.1.1
   flutter:
     sdk: flutter

@@ -3,27 +3,29 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:get_it/get_it.dart';
-import 'package:kawaii_passion_hub_authentication/kawaii_passion_hub_authentication.dart';
+import 'package:kawaii_passion_hub_authentication/kawaii_passion_hub_authentication.dart'
+    as auth_lib;
 import 'firebase_options.dart';
 
 const bool useEmulator = false;
 //Ugly, try to find a solution
-UserInformationUpdated? lastEvent;
+auth_lib.UserInformationUpdated? lastEvent;
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  await Firebase.initializeApp(
+  FirebaseApp app = await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
   );
-  EventBus globalBus = initializeApp();
+  EventBus globalBus = initializeApp(app);
   runApp(MyApp(
     eventBus: globalBus,
   ));
 }
 
-EventBus initializeApp() {
+EventBus initializeApp(FirebaseApp app) {
   EventBus globalBus = EventBus();
   GetIt.I.registerSingleton(globalBus);
+  GetIt.I.registerSingleton(app, instanceName: auth_lib.FirebaseAppName);
   return globalBus;
 }
 
@@ -88,13 +90,15 @@ class AuthGate extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    Widget result = StreamBuilder<UserInformationUpdated?>(
-      stream: EventBusWidget.of(context).eventBus.on<UserInformationUpdated>(),
+    Widget result = StreamBuilder<auth_lib.UserInformationUpdated?>(
+      stream: EventBusWidget.of(context)
+          .eventBus
+          .on<auth_lib.UserInformationUpdated>(),
       initialData: lastEvent,
       builder: (context, snapshot) {
         lastEvent = snapshot.data;
         if (!snapshot.hasData || !snapshot.data!.newUser.isAuthenticated) {
-          return AuthenticationWidget(
+          return auth_lib.AuthenticationWidget(
             googleClientId: const String.fromEnvironment('GOOGLE_CLIENT_ID'),
             logo: Image.asset('assets/icon.jpg'),
           );
@@ -106,7 +110,7 @@ class AuthGate extends StatelessWidget {
         return MyHomePage(title: "App for ${snapshot.data!.newUser.name}");
       },
     );
-    initialize(useEmulator: useEmulator);
+    auth_lib.initialize(useEmulator: useEmulator);
     return result;
   }
 }

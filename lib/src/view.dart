@@ -1,5 +1,9 @@
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutterfire_ui/auth.dart';
+import 'package:get_it/get_it.dart';
+import 'constants.dart' as constants;
 
 class AuthenticationWidget extends StatelessWidget {
   const AuthenticationWidget(
@@ -12,6 +16,8 @@ class AuthenticationWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SignInScreen(
+        auth: FirebaseAuth.instanceFor(
+            app: GetIt.I<FirebaseApp>(instanceName: constants.FirebaseAppName)),
         subtitleBuilder: (context, action) {
           return const Padding(
             padding: EdgeInsets.only(bottom: 8),
