@@ -69,7 +69,7 @@ class Controller extends Disposable {
     } else {
       IdTokenResult idToken = await user.getIdTokenResult(true);
       String jwt = await user.getIdToken();
-      final stream = FirebaseDatabase.instance
+      final stream = FirebaseDatabase.instanceFor(app: authApp)
           .ref('metadata/${user.uid}/refreshTime')
           .onValue;
       eventSubscription?.cancel();
