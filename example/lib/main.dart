@@ -8,8 +8,6 @@ import 'package:kawaii_passion_hub_authentication/kawaii_passion_hub_authenticat
 import 'firebase_options.dart';
 
 const bool useEmulator = false;
-//Ugly, try to find a solution
-auth_lib.UserInformationUpdated? lastEvent;
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -26,6 +24,7 @@ EventBus initializeApp(FirebaseApp app) {
   EventBus globalBus = EventBus();
   GetIt.I.registerSingleton(globalBus);
   GetIt.I.registerSingleton(app, instanceName: auth_lib.FirebaseAppName);
+  auth_lib.initialize(useEmulator: useEmulator);
   return globalBus;
 }
 
@@ -94,9 +93,11 @@ class AuthGate extends StatelessWidget {
       stream: EventBusWidget.of(context)
           .eventBus
           .on<auth_lib.UserInformationUpdated>(),
-      initialData: lastEvent,
+      initialData: auth_lib.AuthentificationState.current != null
+          ? auth_lib.UserInformationUpdated(
+              auth_lib.AuthentificationState.current!)
+          : null,
       builder: (context, snapshot) {
-        lastEvent = snapshot.data;
         if (!snapshot.hasData || !snapshot.data!.newUser.isAuthenticated) {
           return auth_lib.AuthenticationWidget(
             googleClientId: const String.fromEnvironment('GOOGLE_CLIENT_ID'),
@@ -110,7 +111,6 @@ class AuthGate extends StatelessWidget {
         return MyHomePage(title: "App for ${snapshot.data!.newUser.name}");
       },
     );
-    auth_lib.initialize(useEmulator: useEmulator);
     return result;
   }
 }

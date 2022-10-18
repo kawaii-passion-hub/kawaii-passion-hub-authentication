@@ -81,6 +81,7 @@ class Controller extends Disposable {
       });
       info = UserInformation(true, user.displayName, idToken.claims, jwt);
     }
+    AuthentificationState.current = info;
     globalBus.fire(UserInformationUpdated(info));
   }
 

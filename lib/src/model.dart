@@ -1,3 +1,7 @@
+class AuthentificationState {
+  static UserInformation? current;
+}
+
 class UserInformation {
   final bool isAuthenticated;
   final String? name;
